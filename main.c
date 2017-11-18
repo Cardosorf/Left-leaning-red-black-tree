@@ -8,7 +8,6 @@ typedef struct _node{
     struct _node* right;
 } node;
 
-
 node* insert(node* pt, int x);
 node* insertLLRN(node* pt, int x);
 int color(node* pt);
@@ -22,55 +21,14 @@ int main(void)
 
     node* pt_root;
     pt_root = NULL;
-    int counter = 0, limit = 10, value, i;
-    int* nodes;
-//    int* temp;
-    nodes = (int*)malloc(sizeof(int)*limit);
-    if(!nodes){
-        puts("Erro de alocacao");
-        exit(0);
-    }
+    int value;
 
-        while(scanf("%d", &value) != EOF){
-            do{} while (getchar() != '\n');
-            printf("%d value\n", value);
-            nodes[counter] = value;
-             printf("%d counter\n", counter);
-              printf("%d node\n", nodes[counter]);
-            counter++;
+  while(scanf("%d", &value) !=EOF){
+    do{} while (getchar() != '\n');
+    pt_root = insert(pt_root, value);
+  }
 
-
-            /*
-            if(counter >= limit){
-                limit = 2*limit;
-//                temp = (int*)malloc(sizeof(int)*limit);
-//                if(!nodes){
-//                    puts("Erro de alocacao");
-//                    exit(0);
-//                }
-
-//                for(i = 0; i < counter; i++){
-//                    temp[i] = nodes[i];
-//                }
-                nodes = (int*)realloc(nodes, limit);
-            }*/
-        }
-printf("%d counter\n", counter);
-                        for(i = 0; i < 10; i++){
-                            printf("%d oi\n", nodes[i]);
-                        }
-
-//    pt_root = insert(pt_root, 50);
-//    pt_root = insert(pt_root, 1);
-//    pt_root = insert(pt_root, 2);
-//    pt_root = insert(pt_root, 3);
-//    pt_root = insert(pt_root, 20);
-//    pt_root = insert(pt_root, 11);
-//    pt_root = insert(pt_root, 9);
-//    pt_root = insert(pt_root, 12);
-
-
-//    print_pre_order(pt_root);
+   print_pre_order(pt_root);
     free(pt_root);
     return 0;
 }
@@ -163,7 +121,7 @@ node* recolor(node* pt){
 
 void print_pre_order(node* pt){
     if(pt){
-        printf("%d %c\n", pt->key, (pt->isRed == 1) ? 'R' : 'N');
+        printf("%d%c ", pt->key, (pt->isRed == 1) ? 'R' : 'N');
         print_pre_order(pt->left);
         print_pre_order(pt->right);
     }
